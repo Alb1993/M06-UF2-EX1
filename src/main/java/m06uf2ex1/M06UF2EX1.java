@@ -7,6 +7,7 @@ package m06uf2ex1;
 
 import Modelo.Stock;
 import com.github.javafaker.Faker;
+import jakarta.transaction.Transaction;
 import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -38,26 +39,18 @@ public class M06UF2EX1 {
             session = factory.openSession();
             
             logger.trace("Iniciamos transaccion...");
-            session.getTransaction().begin();
-            
-            logger.trace("Creamos un ArrayList de Stocks");
-            
-            ArrayList<Stock> stocks = new ArrayList<Stock>();
+            session.beginTransaction().begin();
             
             logger.trace("Creamos el objeto Faker");
             
             Faker faker = new Faker();
 
-            logger.trace("Añadimos 1000 objetos inventados al ArrayList");
+            logger.trace("Añadimos 1000 objetos inventados al ArrayList y guardamos la sesion por cada objeto creado.");
             
             for(int i=0; i<1000; i++){
                 Stock stock = new Stock(faker.idNumber().valid(),faker.commerce().productName());
-                stocks.add(stock);
+                session.save(stock);
             }
-            
-            logger.trace("Persistimos el estado del ArrayList de objetos");
-            
-            session.persist(stocks);
             
             logger.info("Finalitzem transacciÃ³ i desem a BBDD...");
             
