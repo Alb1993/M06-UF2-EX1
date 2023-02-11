@@ -29,10 +29,10 @@ public class Stock implements Serializable {
     @Column(name = "STOCK_ID", nullable = false, unique = true)
     private Integer stockId;
     
-    @Column(name = "STOCK_CODE", nullable = false, unique = true, length = 10)
+    @Column(name = "STOCK_CODE", nullable = false, unique = true)
     private String stockCode;
     
-    @Column(name = "STOCK_NAME", nullable = false, length = 20)
+    @Column(name = "STOCK_NAME", nullable = false)
     private String stockName;
 
     public Stock() {
@@ -93,6 +93,6 @@ public class Stock implements Serializable {
 
     @Override
     public String toString() {
-        return "entitats.Stock[ stockId=" + stockId + " ]";
+        return "Modelo.Stock[ stockId=" + stockId + " ]";
     }
 }

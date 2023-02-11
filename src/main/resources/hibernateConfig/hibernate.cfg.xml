@@ -5,12 +5,11 @@
         <!-- The dialect specifies the type of database used in hibernate so that hibernate generate appropriate type of SQL statements. For connecting any hibernate application with the database, it is required to provide the configuration of SQL dialect. -->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="hibernate.connection.password">123456</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/exercici1?createDatabaseIfNotExist=true</property>
         <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">123456</property>
         <property name="hibernate.hbm2ddl.auto">create-drop</property>
         <property name="hibernate.connection.characterEncoding">utf8</property>
-        <mapping class="entitats.Stock"></mapping>
-        <mapping class="entitats.Customer"></mapping>
+        <mapping class="Modelo.Stock"></mapping>
     </session-factory>
 </hibernate-configuration>
